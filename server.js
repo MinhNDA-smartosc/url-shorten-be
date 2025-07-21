@@ -40,6 +40,11 @@ app.post('/shorten', async (req, res) => {
   }
 });
 
+
+app.get('/testing', async (req, res) => {
+  return "Testing route"
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
 });
