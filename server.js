@@ -1,15 +1,3 @@
-// const express = require('express');
-// const app = express();
-// const PORT = 3000;
-
-// app.get('/', (req, res) => {
-//   res.send('<h1>Hello, Geeks!</h1><p>This is your simple Express server.</p>');
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server is listening at http://localhost:${PORT}`);
-// });
-
 import express, { json } from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors';
@@ -41,18 +29,17 @@ app.post('/shorten', async (req, res) => {
 });
 
 
-app.get('/testing', async (req, res) => {
-  return "Testing route"
+app.get('/testing', (req, res) => {
+  res.send("Testing route");
 });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}...`);
 });
 
-module.exports = app; // <-- Export the app
+export default app;
 
-// If running locally, start the server
-if (require.main === module)
+if (process.env.NODE_ENV !== 'production' && import.meta.url === `file://${process.argv[ 1 ]}`)
 {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
